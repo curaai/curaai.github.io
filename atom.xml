@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://curaai.github.io/"/>
-  <updated>2017-11-22T06:49:15.287Z</updated>
+  <updated>2017-11-23T12:40:46.999Z</updated>
   <id>http://curaai.github.io/</id>
   
   <author>
@@ -17,11 +17,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>YOLO</title>
+    <link href="http://curaai.github.io/2017/11/23/YOLO/"/>
+    <id>http://curaai.github.io/2017/11/23/YOLO/</id>
+    <published>2017-11-23T12:30:46.000Z</published>
+    <updated>2017-11-23T12:40:46.999Z</updated>
+    
+    <content type="html"><![CDATA[<p>asdf</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;asdf&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://curaai.github.io/tags/Machine-Learning/"/>
+    
+      <category term="Object Detection" scheme="http://curaai.github.io/tags/Object-Detection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://curaai.github.io/2017/11/23/test/"/>
+    <id>http://curaai.github.io/2017/11/23/test/</id>
+    <published>2017-11-23T10:52:12.060Z</published>
+    <updated>2017-11-23T12:11:50.413Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome</p><h1 id="This-is-welcome"><a href="#This-is-welcome" class="headerlink" title="This is welcome"></a>This is welcome</h1><p><img src="test.jpg" alt=""></p><p>asdfasdfa</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome&lt;/p&gt;
+&lt;h1 id=&quot;This-is-welcome&quot;&gt;&lt;a href=&quot;#This-is-welcome&quot; class=&quot;headerlink&quot; title=&quot;This is welcome&quot;&gt;&lt;/a&gt;This is welcome&lt;/h1&gt;&lt;p&gt;&lt;im
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://curaai.github.io/2017/11/22/hello-world/"/>
     <id>http://curaai.github.io/2017/11/22/hello-world/</id>
     <published>2017-11-22T06:49:15.287Z</published>
-    <updated>2017-11-22T06:49:15.287Z</updated>
+    <updated>2017-11-23T11:05:37.236Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -34,6 +82,10 @@
     
     </summary>
     
+    
+      <category term="Hello world" scheme="http://curaai.github.io/tags/Hello-world/"/>
+    
+      <category term="World" scheme="http://curaai.github.io/tags/World/"/>
     
   </entry>
   
