@@ -13,23 +13,23 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="YOLO란 ?Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다. Model Architectur">
-<meta name="keywords" content="machine learning,object detection">
+    <meta name="description" content="Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다.">
+<meta name="keywords" content="object detection,machine learning">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="YOLO">
 <meta property="og:url" content="http://curaai.github.io/2017/11/23/YOLO/index.html">
 <meta property="og:site_name" content="Cura AI&#39;s ML Blog">
-<meta property="og:description" content="YOLO란 ?Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다. Model ArchitectureFaster R CNN과 다르게 YOLO의 Model은 하나의 Netw">
+<meta property="og:description" content="Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://curaai.github.io/2017/11/23/YOLO/model_architecture.jpeg">
 <meta property="og:image" content="http://curaai.github.io/2017/11/23/YOLO/grid.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/23/YOLO/bbox_confidence.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/23/YOLO/cls_confidence.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/23/YOLO/loss.JPG">
-<meta property="og:updated_time" content="2017-11-24T14:34:08.200Z">
+<meta property="og:updated_time" content="2017-11-26T11:15:36.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="YOLO">
-<meta name="twitter:description" content="YOLO란 ?Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다. Model ArchitectureFaster R CNN과 다르게 YOLO의 Model은 하나의 Netw">
+<meta name="twitter:description" content="Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 아주 빠릅니다.">
 <meta name="twitter:image" content="http://curaai.github.io/2017/11/23/YOLO/model_architecture.jpeg">
     
     
@@ -43,8 +43,19 @@
     
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
-    <!--STYLES END--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!--STYLES END-->
     
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-110130026-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
     
 </head>
 
@@ -221,7 +232,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h2 id="YOLO란"><a href="#YOLO란" class="headerlink" title="YOLO란 ?"></a>YOLO란 ?</h2><p>Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 <strong>아주 빠릅니다.</strong></p>
+            <!-- excerpt -->
 <h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>Faster R CNN과 다르게 YOLO의 Model은 하나의 Network로만 이루어져 있습니다. 그래서 faster r cnn 보다 학습하는 과정도 단순화 되어있고, process speed도 더 빠르지 않은가 싶습니다. </p>
 <p><img src="model_architecture.jpeg" alt="Alt text"></p>
 <p>여기서 가장 중요한 부분은 저기 빨간색 box 부분입니다. 저 부분을 visual화 시켜보면 이런식으로 N x N 사각형으로 이루어져 있습니다.<br>이 N x N 칸 각각을 <strong>Grid Cell</strong>이라고 합니다.</p>
@@ -249,7 +260,6 @@
 <li>λcoord 는 좌표값에 대한 loss와 다른 loss의 균형을 맞추기 위한 balance parameter</li>
 <li>λnoobj 는 object가 없는 경우가 많으므로 없는 경우와 있는 경우의 균형을 맞추기 위한 balance prameter</li>
 </ul>
-
             
         </div>
     </div>
@@ -513,7 +523,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 <strong>아주 빠릅니다.</strong></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -532,13 +542,19 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Interpolation은 한국어로 <strong>보간법</strong>으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
                 </div>
                 
                 <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Deformable CN/">
+                            <img class="media-image" src="http://curaai.github.io/2017/11/24/Deformable CN/image-1.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
                     
                     <div class="media-body">
                         <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Deformable CN/">
@@ -551,7 +567,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>사전적 정의로 <em>deformable: 변형할 수 있는, 변형 가능한</em> 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -583,7 +599,7 @@
     <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script>
         var algoliaClient = algoliasearch('Z7A3XW4R2I', '12db1ad54372045549ef465881c17e743');
-        var algoliaIndex = algoliaClient.initIndex('my-hexo-blog');
+        var algoliaIndex = algoliaClient.initIndex('curaai');
     </script>
 
     <script type="text/x-mathjax-config">

@@ -13,13 +13,13 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Deformable CN사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다. Deformable CNN는 기본적으로 Faster R-CNN, R-FCN, FCN에 대한 기본지식을 요구합니다. Def">
-<meta name="keywords" content="machine learning,object detection">
+    <meta name="description" content="사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.">
+<meta name="keywords" content="object detection,machine learning">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Deformable CN">
 <meta property="og:url" content="http://curaai.github.io/2017/11/24/Deformable CN/index.html">
 <meta property="og:site_name" content="Cura AI&#39;s ML Blog">
-<meta property="og:description" content="Deformable CN사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다. Deformable CNN는 기본적으로 Faster R-CNN, R-FCN, FCN에 대한 기본지식을 요구합니다. Deformable Convolution이 convolution은 왜 변형해야">
+<meta property="og:description" content="사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/figure1.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/eq2.png">
@@ -27,10 +27,10 @@
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/eq6.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/delta-hat.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/figure4.png">
-<meta property="og:updated_time" content="2017-11-26T06:21:30.234Z">
+<meta property="og:updated_time" content="2017-11-26T11:17:16.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deformable CN">
-<meta name="twitter:description" content="Deformable CN사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다. Deformable CNN는 기본적으로 Faster R-CNN, R-FCN, FCN에 대한 기본지식을 요구합니다. Deformable Convolution이 convolution은 왜 변형해야">
+<meta name="twitter:description" content="사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.">
 <meta name="twitter:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/figure1.png">
     
     
@@ -40,12 +40,26 @@
         <meta property="og:image" content="http://curaai.github.io/assets/images/nyan.png"/>
     
     
+        <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable CN/image-1.jpg"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://curaai.github.io/2017/11/24/Deformable CN/image-1.jpg" />
+    
     
     
     <!--STYLES-->
     <link rel="stylesheet" href="/assets/css/style-sxklfps8ywgfyyjcowvnb4gxdgt0zjts3hsguljmv9uqanxjbnitrovtbrek.min.css">
-    <!--STYLES END--><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <!--STYLES END-->
     
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-110130026-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
     
 </head>
 
@@ -222,7 +236,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h2 id="Deformable-CN"><a href="#Deformable-CN" class="headerlink" title="Deformable CN"></a>Deformable CN</h2><p>사전적 정의로 <em>deformable: 변형할 수 있는, 변형 가능한</em> 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.</p>
+            <!-- excerpt -->
 <p><span style="color:orange"><strong>Deformable CNN</strong>는 기본적으로 <strong>Faster R-CNN, R-FCN, FCN</strong>에 대한 기본지식을 요구합니다.</span></p>
 <h2 id="Deformable-Convolution"><a href="#Deformable-Convolution" class="headerlink" title="Deformable Convolution"></a>Deformable Convolution</h2><p>이 convolution은 왜 변형해야하며 이로서 얻는 점을 알아보도록 하겠습니다.</p>
 <h3 id="Convolution’-Problem"><a href="#Convolution’-Problem" class="headerlink" title="Convolution’ Problem"></a>Convolution’ Problem</h3><p><img src="figure1.png" alt="filter" title="convolution filters"></p>
@@ -268,7 +282,6 @@
 </ol>
 <h3 id="Deformable-PS-ROI-Pooling"><a href="#Deformable-PS-ROI-Pooling" class="headerlink" title="Deformable PS ROI Pooling"></a>Deformable PS ROI Pooling</h3><p>여기서는 각각의 ROI에 대해 PS ROI Pooling을 거친 offset을 받아와 각각의 class마다 roi의 score를 매기는 것입니다. 마찬가지로 여기서는 $k^2(C+1)$개의 filter를 가지고 있습니다. </p>
 <p>ROI에 offset을 적용시킨 각각의 filter 한장씩이 해당 Class에 대해 socre를 매겨 길이 $k$ 정사각형을 만듭니다. 이 정사각형의 값들을 모두 모아서 해당 class에 대해 score를 매깁니다. </p>
-
             
         </div>
     </div>
@@ -532,7 +545,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 <strong>아주 빠릅니다.</strong></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -551,13 +564,19 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>Interpolation은 한국어로 <strong>보간법</strong>으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
                 </div>
                 
                 <div class="media">
+                    
+                    <div class="media-left">
+                        <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Deformable CN/">
+                            <img class="media-image" src="http://curaai.github.io/2017/11/24/Deformable CN/image-1.jpg" width="90" height="90"/>
+                        </a>
+                    </div>
                     
                     <div class="media-body">
                         <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Deformable CN/">
@@ -570,7 +589,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>사전적 정의로 <em>deformable: 변형할 수 있는, 변형 가능한</em> 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -602,7 +621,7 @@
     <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script>
         var algoliaClient = algoliasearch('Z7A3XW4R2I', '12db1ad54372045549ef465881c17e743');
-        var algoliaIndex = algoliaClient.initIndex('my-hexo-blog');
+        var algoliaIndex = algoliaClient.initIndex('curaai');
     </script>
 
     <script type="text/x-mathjax-config">

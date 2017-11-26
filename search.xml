@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[Deformable CN]]></title>
       <url>/2017/11/24/Deformable%20CN/</url>
-      <content type="html"><![CDATA[<h2 id="Deformable-CN"><a href="#Deformable-CN" class="headerlink" title="Deformable CN"></a>Deformable CN</h2><p>사전적 정의로 <em>deformable: 변형할 수 있는, 변형 가능한</em> 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.</p>
+      <content type="html"><![CDATA[<!-- excerpt -->
 <p><span style="color:orange"><strong>Deformable CNN</strong>는 기본적으로 <strong>Faster R-CNN, R-FCN, FCN</strong>에 대한 기본지식을 요구합니다.</span></p>
 <h2 id="Deformable-Convolution"><a href="#Deformable-Convolution" class="headerlink" title="Deformable Convolution"></a>Deformable Convolution</h2><p>이 convolution은 왜 변형해야하며 이로서 얻는 점을 알아보도록 하겠습니다.</p>
 <h3 id="Convolution’-Problem"><a href="#Convolution’-Problem" class="headerlink" title="Convolution’ Problem"></a>Convolution’ Problem</h3><p><img src="figure1.png" alt="filter" title="convolution filters"></p>
@@ -50,15 +50,14 @@
 <li>$C+1$는 각각의 Class에 대해 offset을 예측하기 때문이고 +1 의 경우는 background 입니다.</li>
 </ol>
 <h3 id="Deformable-PS-ROI-Pooling"><a href="#Deformable-PS-ROI-Pooling" class="headerlink" title="Deformable PS ROI Pooling"></a>Deformable PS ROI Pooling</h3><p>여기서는 각각의 ROI에 대해 PS ROI Pooling을 거친 offset을 받아와 각각의 class마다 roi의 score를 매기는 것입니다. 마찬가지로 여기서는 $k^2(C+1)$개의 filter를 가지고 있습니다. </p>
-<p>ROI에 offset을 적용시킨 각각의 filter 한장씩이 해당 Class에 대해 socre를 매겨 길이 $k$ 정사각형을 만듭니다. 이 정사각형의 값들을 모두 모아서 해당 class에 대해 score를 매깁니다. </p>
-]]></content>
+<p>ROI에 offset을 적용시킨 각각의 filter 한장씩이 해당 Class에 대해 socre를 매겨 길이 $k$ 정사각형을 만듭니다. 이 정사각형의 값들을 모두 모아서 해당 class에 대해 score를 매깁니다. </p>]]></content>
       
         
         <tags>
             
-            <tag> machine learning </tag>
-            
             <tag> object detection </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
         
@@ -67,20 +66,19 @@
     <entry>
       <title><![CDATA[Interpolation]]></title>
       <url>/2017/11/24/Interpolation/</url>
-      <content type="html"><![CDATA[<h2 id="Interpolation"><a href="#Interpolation" class="headerlink" title="Interpolation"></a>Interpolation</h2><p>Interpolation은 한국어로 <strong>보간법</strong>으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.</p>
+      <content type="html"><![CDATA[<!-- excerpt -->
 <h2 id="Linear-Interpolation"><a href="#Linear-Interpolation" class="headerlink" title="Linear Interpolation"></a>Linear Interpolation</h2><p>Linear Interpolation는 <strong>선형 보간법</strong>입니다.</p>
 <p><img src="linear-interpolation.png" alt="alter text" title="linear interpolation"></p>
 <p><em>$x_0, x_1, y_0, y_1$를 이용하여 $x$를 가지고 있을 때 $x$에 해당하는 $y$를 구할 수 있습니다.</em></p>
 <p>$$ \frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 - y_0} \\ y = \frac{x - x_0}{x_1 - x_0}(y_1 - y_0) + y_0 $$</p>
-<p>이런식으로 좌항에 $y$만 남기고 다 옮기면 $x$에 해당하는 $y$값을 구할 수 있습니다.</p>
-]]></content>
+<p>이런식으로 좌항에 $y$만 남기고 다 옮기면 $x$에 해당하는 $y$값을 구할 수 있습니다.</p>]]></content>
       
         
         <tags>
             
-            <tag> math </tag>
+            <tag> object detection </tag>
             
-            <tag> Object Detection </tag>
+            <tag> math </tag>
             
         </tags>
         
@@ -89,7 +87,7 @@
     <entry>
       <title><![CDATA[YOLO]]></title>
       <url>/2017/11/23/YOLO/</url>
-      <content type="html"><![CDATA[<h2 id="YOLO란"><a href="#YOLO란" class="headerlink" title="YOLO란 ?"></a>YOLO란 ?</h2><p>Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 <strong>아주 빠릅니다.</strong></p>
+      <content type="html"><![CDATA[<!-- excerpt -->
 <h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p>Faster R CNN과 다르게 YOLO의 Model은 하나의 Network로만 이루어져 있습니다. 그래서 faster r cnn 보다 학습하는 과정도 단순화 되어있고, process speed도 더 빠르지 않은가 싶습니다. </p>
 <p><img src="model_architecture.jpeg" alt="Alt text"></p>
 <p>여기서 가장 중요한 부분은 저기 빨간색 box 부분입니다. 저 부분을 visual화 시켜보면 이런식으로 N x N 사각형으로 이루어져 있습니다.<br>이 N x N 칸 각각을 <strong>Grid Cell</strong>이라고 합니다.</p>
@@ -116,15 +114,14 @@
 <ul>
 <li>λcoord 는 좌표값에 대한 loss와 다른 loss의 균형을 맞추기 위한 balance parameter</li>
 <li>λnoobj 는 object가 없는 경우가 많으므로 없는 경우와 있는 경우의 균형을 맞추기 위한 balance prameter</li>
-</ul>
-]]></content>
+</ul>]]></content>
       
         
         <tags>
             
-            <tag> machine learning </tag>
-            
             <tag> object detection </tag>
+            
+            <tag> machine learning </tag>
             
         </tags>
         
