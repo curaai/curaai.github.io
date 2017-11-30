@@ -6,27 +6,28 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Cura AI&#39;s ML Blog">
-    <title>Interpolation - Cura AI&#39;s ML Blog</title>
+    <title>Fully Convolution Network - Cura AI&#39;s ML Blog</title>
     <meta name="author" content="CuraAI">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Interpolation은 한국어로 보간법으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.">
-<meta name="keywords" content="object detection,math">
+    <meta name="description" content="FCN은 기존의 Fully Connected Layer를 Convolution으로 대신한 것입니다.">
+<meta name="keywords" content="machine learning,semantic segmentation">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Interpolation">
-<meta property="og:url" content="http://curaai.github.io/2017/11/24/Interpolation/index.html">
+<meta property="og:title" content="Fully Convolution Network">
+<meta property="og:url" content="http://curaai.github.io/2017/11/30/Fully Convolution Network/index.html">
 <meta property="og:site_name" content="Cura AI&#39;s ML Blog">
-<meta property="og:description" content="Interpolation은 한국어로 보간법으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.">
+<meta property="og:description" content="FCN은 기존의 Fully Connected Layer를 Convolution으로 대신한 것입니다.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://curaai.github.io/2017/11/24/Interpolation/linear-interpolation.png">
-<meta property="og:updated_time" content="2017-11-26T11:15:38.053Z">
+<meta property="og:image" content="http://curaai.github.io/2017/11/30/Fully%20Convolution%20Network/figure3.png">
+<meta property="og:image" content="http://curaai.github.io/2017/11/30/Fully%20Convolution%20Network/another_figure3.png">
+<meta property="og:updated_time" content="2017-11-30T14:44:17.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Interpolation">
-<meta name="twitter:description" content="Interpolation은 한국어로 보간법으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.">
-<meta name="twitter:image" content="http://curaai.github.io/2017/11/24/Interpolation/linear-interpolation.png">
+<meta name="twitter:title" content="Fully Convolution Network">
+<meta name="twitter:description" content="FCN은 기존의 Fully Connected Layer를 Convolution으로 대신한 것입니다.">
+<meta name="twitter:image" content="http://curaai.github.io/2017/11/30/Fully%20Convolution%20Network/figure3.png">
     
     
         
@@ -210,14 +211,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Interpolation
+            Fully Convolution Network
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-11-24T17:13:38+09:00">
+    <time itemprop="datePublished" datetime="2017-11-30T23:04:40+09:00">
 	
-		    Nov 24, 2017
+		    Nov 30, 2017
     	
     </time>
     
@@ -229,11 +230,27 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <!-- excerpt -->
-<h2 id="Linear-Interpolation"><a href="#Linear-Interpolation" class="headerlink" title="Linear Interpolation"></a>Linear Interpolation</h2><p>Linear Interpolation는 <strong>선형 보간법</strong>입니다.</p>
-<p><img src="linear-interpolation.png" alt="alter text" title="linear interpolation"></p>
-<p><em>$x_0, x_1, y_0, y_1$를 이용하여 $x$를 가지고 있을 때 $x$에 해당하는 $y$를 구할 수 있습니다.</em></p>
-<p>$$ \frac{x - x_0}{x_1 - x_0} = \frac{y - y_0}{y_1 - y_0} \\ y = \frac{x - x_0}{x_1 - x_0}(y_1 - y_0) + y_0 $$</p>
-<p>이런식으로 좌항에 $y$만 남기고 다 옮기면 $x$에 해당하는 $y$값을 구할 수 있습니다.</p>
+<h2 id="Fully-Connected-Layer’s-Problem"><a href="#Fully-Connected-Layer’s-Problem" class="headerlink" title="Fully Connected Layer’s Problem"></a>Fully Connected Layer’s Problem</h2><p>기존의 FC(Fully Connected Layer)는 두가지 문제점이 있었습니다. </p>
+<ol>
+<li>input이 자유롭지 않다, 고정되어있다. </li>
+<li>비공간적 출력을 만들어낸다, 좌표값에 대한 정보를 없앤다.</li>
+</ol>
+<p>이 두가지 문제점을 ‘FC대신 그냥 convolution을 사용하면 어떨까?’란 의문점에서 Fully Convolution Network가 나오게된 것입니다. </p>
+<h2 id="What-is-Segmantation"><a href="#What-is-Segmantation" class="headerlink" title="What is Segmantation??"></a>What is Segmantation??</h2><p>사전적인 정의로는 <em>segmantation: 분할, 분할된 부분</em> 입니다만, 여기서는 어떠한 object들에게 각각에 해당하는 색깔을 입혀 이미지에 표시하는 것입니다.</p>
+<h2 id="FCN-Architecture"><a href="#FCN-Architecture" class="headerlink" title="FCN Architecture"></a>FCN Architecture</h2><p>이 FCN에서 FC를 Convolution으로 바꾸기는 했지만 궁극적인 목표는 segmentation을 하는 것입니다. </p>
+<p><img src="figure3.png" alt="figure" title="figure3"></p>
+<p><img src="another_figure3.png" alt="figure" title="figure3"></p>
+<blockquote>
+<p>어떠한 image가 주어졌을 때 이것이 Network를 통과하며 conv와 pooling을 거쳐나온 feature을 upsampling이란 과정을 통해 다시 image로 복원을 하였을 때 segmentation이 되는 것입니다.</p>
+</blockquote>
+<p><span style="color:orange">그러면 저기 (FCN-??s)는 뭐죠?</span></p>
+<p>network를 거치며 pooling을 하게되면(stride가 2라고 할 때) 2의 제곱씩 값을 나타내게 됩니다. </p>
+<ul>
+<li>pool5에서는 한 점당 w/32에 대한 정보를 가지고 있으므로 FCN-32s라고 표기한 것입니다.</li>
+<li>pool4에서는 w/16에 대한 정보를 가지고 있는데, pool5에서 나온 정보를 합칩니다. </li>
+<li>마찬가지로 pool3에서도 pool4에서 합쳐진 정보를 가지고 다시 합칩니다.</li>
+</ul>
+<p><span style="color:red">한 네트워크에서 FCN-32s, FCN-16s, FCN-8s을 동시에 만들어내는 것이 아닙니다.</span></p>
             
         </div>
     </div>
@@ -242,7 +259,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/math/">math</a> <a class="tag tag--primary tag--small t-link" href="/tags/object-detection/">object detection</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/machine-learning/">machine learning</a> <a class="tag tag--primary tag--small t-link" href="/tags/semantic-segmentation/">semantic segmentation</a>
 
             </div>
         
@@ -252,7 +269,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/24/Deformable CN/"  data-tooltip="Deformable CN">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -260,7 +277,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/23/YOLO/" data-tooltip="YOLO">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/24/Deformable CN/" data-tooltip="Deformable CN">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -278,7 +295,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -286,7 +303,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -294,7 +311,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -334,7 +351,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/24/Deformable CN/"  data-tooltip="Deformable CN">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -342,7 +359,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/23/YOLO/" data-tooltip="YOLO">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/11/24/Deformable CN/" data-tooltip="Deformable CN">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -360,7 +377,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-facebook-official"></i>
                 </a>
             </li>
@@ -368,7 +385,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-twitter"></i>
                 </a>
             </li>
@@ -376,7 +393,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-google-plus"></i>
                 </a>
             </li>
@@ -401,7 +418,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
                 </a>
             </li>
@@ -409,7 +426,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-twitter"></i><span>Share on Twitter</span>
                 </a>
             </li>
@@ -417,7 +434,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/24/Interpolation/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://curaai.github.io/2017/11/30/Fully Convolution Network/">
                     <i class="fa fa-google-plus"></i><span>Share on Google+</span>
                 </a>
             </li>
@@ -486,44 +503,6 @@
                 
                 <div class="media">
                     
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://curaai.github.io/2017/11/23/YOLO/">
-                            <h3 class="media-heading">YOLO</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    Nov 23, 2017
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Object Detection 알고리즘 중 하나로서 faster r cnn과 달리 하나의 네트워크 구조를 가지고 있으며, processing 과정 때문에 작은 물체를 자주 detection하지 못한다는 단점이 있습니다. 하지만 <strong>아주 빠릅니다.</strong></p></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Interpolation/">
-                            <h3 class="media-heading">Interpolation</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    Nov 24, 2017
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"><p>Interpolation은 한국어로 <strong>보간법</strong>으로 기존에 있던 data를 기반으로 어떠한 x가 주어졌을 때 그 x에 해당하는 y값을 추리하는 것입니다.</p></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
                     <div class="media-left">
                         <a class="link-unstyled" href="http://curaai.github.io/2017/11/24/Deformable CN/">
                             <img class="media-image" src="http://curaai.github.io/2017/11/24/Deformable CN/image-1.jpg" width="90" height="90"/>
@@ -547,6 +526,25 @@
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://curaai.github.io/2017/11/30/Fully Convolution Network/">
+                            <h3 class="media-heading">Fully Convolution Network</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Nov 30, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>FCN은 기존의 Fully Connected Layer를 Convolution으로 대신한 것입니다.</p></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -554,7 +552,7 @@
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                3 posts found
+                2 posts found
             </p>
         </div>
     </div>
