@@ -14,20 +14,39 @@
 <p>이 두가지 문제점을 ‘FC대신 그냥 convolution을 사용하면 어떨까?’란 의문점에서 Fully Convolution Network가 나오게된 것입니다. </p>
 <h2 id="What-is-Segmantation"><a href="#What-is-Segmantation" class="headerlink" title="What is Segmantation??"></a>What is Segmantation??</h2><p>사전적인 정의로는 <em>segmantation: 분할, 분할된 부분</em> 입니다만, 여기서는 어떠한 object들에게 각각에 해당하는 색깔을 입혀 이미지에 표시하는 것입니다.</p>
 <h2 id="FCN-Architecture"><a href="#FCN-Architecture" class="headerlink" title="FCN Architecture"></a>FCN Architecture</h2><p>이 FCN에서 FC를 Convolution으로 바꾸기는 했지만 궁극적인 목표는 segmentation을 하는 것입니다. </p>
-<p><img src="figure3.png" alt="figure" title="figure3"></p>
-<p><img src="another_figure3.png" alt="figure" title="figure3"></p>
+<p>image1<br><img src="figure3.png" alt="figure" title="figure3"></p>
+<p>image2<br><img src="another_figure3.png" alt="figure" title="figure3"><br><em>위 이미지들은 같은 것을 다르게 표현한 것입니다.</em></p>
 <blockquote>
 <p>어떠한 image가 주어졌을 때 이것이 Network를 통과하며 conv와 pooling을 거쳐나온 feature을 upsampling이란 과정을 통해 다시 image로 복원을 하였을 때 segmentation이 되는 것입니다.</p>
 </blockquote>
 <p><span style="color:orange">그러면 저기 (FCN-??s)는 뭐죠?</span></p>
-<p>network를 거치며 pooling을 하게되면(stride가 2라고 할 때) 2의 제곱씩 값을 나타내게 됩니다. </p>
+<p>network를 거치며 pooling을 하게되면(stride가 2라고 할 때)pooling된 feature의 한점은 2^(stride횟수)의 값을 압축적으로 담고 있는 것입니다.</p>
 <ul>
 <li>pool5에서는 한 점당 w/32에 대한 정보를 가지고 있으므로 FCN-32s라고 표기한 것입니다.</li>
 <li>pool4에서는 w/16에 대한 정보를 가지고 있는데, pool5에서 나온 정보를 합칩니다. </li>
 <li>마찬가지로 pool3에서도 pool4에서 합쳐진 정보를 가지고 다시 합칩니다.</li>
 </ul>
-<p><span style="color:red">한 네트워크에서 FCN-32s, FCN-16s, FCN-8s을 동시에 만들어내는 것이 아닙니다.</span></p>]]></content>
+<p><span style="color:red">한 네트워크에서 FCN-32s, FCN-16s, FCN-8s을 동시에 만들어내는 것이 아닙니다.</span>segmentation을 하는 방법이 3가지 있는 것입니다.</p>
+<h3 id="Upsampling"><a href="#Upsampling" class="headerlink" title="Upsampling"></a>Upsampling</h3><p>pooling에서 바로 upsampling을 할 경우에는 Deconvolution을 거쳐 바로 segmentaic 이미지를 만들어 내지만, 이전의 pooling layer와 합칠경우에는 bilinear interpolation을 이용하여 이전의 layer처럼 크기를 키워줘야 합니다. </p>
+<h3 id="Fuse-amp-Summing"><a href="#Fuse-amp-Summing" class="headerlink" title="Fuse &amp; Summing"></a>Fuse &amp; Summing</h3><p>논문에서는 fuse라고 되어 있는 부분은 그냥 upsampling된 layer와 기존에 있던 layer의 feature들을 합하는<br>것입니다. </p>
+<p><img src="fuse.png" alt="image" title="fuse"></p>
+<p>위와 같이 pool5를 upsampling해서 이것과 기존의 pool4의 feature를 fuse(합함)합니다. 그 결과를 deconvolution을 거치게 되면 FCN-16s 이미지가 나오게 되는 것이죠. <em>FCN-8s도 이와 같은 방식입니다.</em></p>
+<h3 id="Deconvolution"><a href="#Deconvolution" class="headerlink" title="Deconvolution"></a>Deconvolution</h3><p>그러면 위에서 자꾸 언급되는 deconvolution이 무엇이냐 하면 convolution filter를 거쳐 나온 feature를 다시 원래 이미지로 되돌리는 것입니다. </p>
+<p><img src="deconvnet.png" alt="image" title="deconvolution"></p>
+<h2 id="Segmentation"><a href="#Segmentation" class="headerlink" title="Segmentation"></a>Segmentation</h2><p>그러면 deconv 한 결과를 어떻게 segmentation하는가 ?? 가 문제겠죠.</p>
+<p><img src="figure1.png" alt="figure" title="figure1"></p>
+<p>deconv를 거치면 위의 그림과 같이 depth가 21인 deconv ouptut이 나오게 됩니다. 여기서 하나의 output filter는 해당하는 class에 대한 값을 가지고 있는 것이죠. </p>
+<blockquote>
+<p>그래서 각각의 filter에 대해 softmax를 하게되면 한 pixel(output의 한점)에서 가장 큰 값이 그pixel에 해당하는 object가 segmentation 되는 것이죠. </p>
+</blockquote>
+<p>그래서 FCN은 softmax loss를 사용합니다.</p>]]></content>
       
+        <categories>
+            
+            <category> Machine Learning </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -89,12 +108,18 @@
 <h3 id="Deformable-PS-ROI-Pooling"><a href="#Deformable-PS-ROI-Pooling" class="headerlink" title="Deformable PS ROI Pooling"></a>Deformable PS ROI Pooling</h3><p>여기서는 각각의 ROI에 대해 PS ROI Pooling을 거친 offset을 받아와 각각의 class마다 roi의 score를 매기는 것입니다. 마찬가지로 여기서는 $k^2(C+1)$개의 filter를 가지고 있습니다. </p>
 <p>ROI에 offset을 적용시킨 각각의 filter 한장씩이 해당 Class에 대해 socre를 매겨 길이 $k$ 정사각형을 만듭니다. 이 정사각형의 값들을 모두 모아서 해당 class에 대해 score를 매깁니다. </p>]]></content>
       
+        <categories>
+            
+            <category> Machine Learning </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> object detection </tag>
-            
             <tag> machine learning </tag>
+            
+            <tag> object detection </tag>
             
         </tags>
         
