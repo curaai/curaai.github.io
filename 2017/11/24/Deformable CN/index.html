@@ -14,7 +14,7 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.">
-<meta name="keywords" content="object detection,machine learning">
+<meta name="keywords" content="object detection">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Deformable CN">
 <meta property="og:url" content="http://curaai.github.io/2017/11/24/Deformable CN/index.html">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/eq6.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/delta-hat.png">
 <meta property="og:image" content="http://curaai.github.io/2017/11/24/Deformable%20CN/figure4.png">
-<meta property="og:updated_time" content="2017-12-02T02:56:12.520Z">
+<meta property="og:updated_time" content="2017-12-02T08:28:20.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deformable CN">
 <meta name="twitter:description" content="사전적 정의로 deformable: 변형할 수 있는, 변형 가능한 이란 뜻을 가지고 있습니다. 즉 변형가능한 convolution을 말합니다.">
@@ -268,10 +268,8 @@
 <p><img src="eq2.png" alt="eq" title="equation2"></p>
 <p>그래서 다음 층의 position에 해당하는 값은 sliding window의 중점에서 가중치와 x의 바뀐 offset로부터 나옵니다.</p>
 <h3 id="Bilinear-Interpolation"><a href="#Bilinear-Interpolation" class="headerlink" title="Bilinear Interpolation"></a>Bilinear Interpolation</h3><p>하지만 이 $\Delta p_0$는 실수 값입니다. 하지만 feature map에는 실수 좌표값이 없으므로 bilinear interpolation(양선형 보간법)이란 것을 이용하여 값을 대체합니다. $q$는 feature map 상의 모든 값들을 열거한 것을 말합니다.</p>
-<script type="math/tex; mode=display">
-G(\cdot, \cdot) = \text{bilinear interpolation kernel} \\\ 
-G(q,p) = g(q_x, p_x) \cdot g(q_y, p_y) \\\
-g(a, b) = max(0, 1 - |a - b|)</script><h3 id="Deformable-Convolution-1"><a href="#Deformable-Convolution-1" class="headerlink" title="Deformable Convolution"></a>Deformable Convolution</h3><p>input feature map 과 동일한 shape의 conv를 만드는 때 이때 conv의 filter size는 $2N$($N$=$R$의 원소 개수)입니다. 각각의 칸은 2N개의 offset을 예측하는데 이때 2N인 이유는 (x,y) 두쌍의 offset을 예측해야 하기 때문입니다.<br><img src="figure2.png" alt="figure" title="figure2"></p>
+<p>$$<br>G(\cdot, \cdot) = \text{bilinear interpolation kernel} \\<br>G(q,p) = g(q_x, p_x) \cdot g(q_y, p_y) \\<br>g(a, b) = max(0, 1 - |a - b|)<br>$$</p>
+<h3 id="Deformable-Convolution-1"><a href="#Deformable-Convolution-1" class="headerlink" title="Deformable Convolution"></a>Deformable Convolution</h3><p>input feature map 과 동일한 shape의 conv를 만드는 때 이때 conv의 filter size는 $2N$($N$=$R$의 원소 개수)입니다. 각각의 칸은 2N개의 offset을 예측하는데 이때 2N인 이유는 (x,y) 두쌍의 offset을 예측해야 하기 때문입니다.<br><img src="figure2.png" alt="figure" title="figure2"></p>
 <h2 id="Deformable-ROI-Pooling"><a href="#Deformable-ROI-Pooling" class="headerlink" title="Deformable ROI Pooling"></a>Deformable ROI Pooling</h2><p>일반적인 ROI Pooling과는 다르게 offset 값들을 다르게 함으로 그 바뀐 offset 값들을 포함해서 pooling을 해야합니다.</p>
 <p><img src="eq6.png" alt="eq image" title="equation"></p>
 <p>ROI bin에 해당하는 각각의 deformable한 값들을 average pooling 하는 것입니다. 마찬가지로 $x$의 값이 실수이니 bilinear interpolation으로 값을 구합니다.</p>
@@ -295,7 +293,7 @@ g(a, b) = max(0, 1 - |a - b|)</script><h3 id="Deformable-Convolution-1"><a href=
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">TAGGED IN</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/machine-learning/">machine learning</a> <a class="tag tag--primary tag--small t-link" href="/tags/object-detection/">object detection</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/object-detection/">object detection</a>
 
             </div>
         
@@ -575,6 +573,25 @@ g(a, b) = max(0, 1 - |a - b|)</script><h3 id="Deformable-Convolution-1"><a href=
                     <hr>
                 </div>
                 
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://curaai.github.io/2017/12/03/Faster-R-CNN/">
+                            <h3 class="media-heading">Faster R CNN</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 3, 2017
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         <div class="modal-footer">
@@ -582,7 +599,7 @@ g(a, b) = max(0, 1 - |a - b|)</script><h3 id="Deformable-Convolution-1"><a href=
                 data-message-zero="no post found"
                 data-message-one="1 post found"
                 data-message-other="{n} posts found">
-                2 posts found
+                3 posts found
             </p>
         </div>
     </div>
