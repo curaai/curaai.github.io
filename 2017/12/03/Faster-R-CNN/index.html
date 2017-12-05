@@ -13,21 +13,26 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="object detection에서 사용되는 Faster R CNN입니다. Fast R CNNFaster R CNN은 이름으로도 알 수 있듯이 Fast R CNN에 기초하여 어떠한 것을 추가로 더한 것입니다. 그러니 먼저 Fast R CNN을 해야겠죠. RegionFast R CNN은 R">
+    <meta name="description" content="object detection에서 사용되는 Faster R CNN입니다.">
 <meta name="keywords" content="object detection">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Faster R CNN">
 <meta property="og:url" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/index.html">
 <meta property="og:site_name" content="Cura AI&#39;s ML Blog">
-<meta property="og:description" content="object detection에서 사용되는 Faster R CNN입니다. Fast R CNNFaster R CNN은 이름으로도 알 수 있듯이 Fast R CNN에 기초하여 어떠한 것을 추가로 더한 것입니다. 그러니 먼저 Fast R CNN을 해야겠죠. RegionFast R CNN은 R CNN과 다른점이 있습니다.   기존의 R-CNN은 이미지에서 regi">
+<meta property="og:description" content="object detection에서 사용되는 Faster R CNN입니다.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/difference.png">
-<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/fast-architecture.png">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/roi-pooling.png">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/roi-pooling-back-prop.png">
 <meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/smooth-l1-loss.png">
-<meta property="og:updated_time" content="2017-12-04T14:14:20.322Z">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/fast-architecture.png">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/performance-experiment.png">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/train-time.png">
+<meta property="og:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/classifier-experiment.png">
+<meta property="og:updated_time" content="2017-12-05T05:44:27.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Faster R CNN">
-<meta name="twitter:description" content="object detection에서 사용되는 Faster R CNN입니다. Fast R CNNFaster R CNN은 이름으로도 알 수 있듯이 Fast R CNN에 기초하여 어떠한 것을 추가로 더한 것입니다. 그러니 먼저 Fast R CNN을 해야겠죠. RegionFast R CNN은 R CNN과 다른점이 있습니다.   기존의 R-CNN은 이미지에서 regi">
+<meta name="twitter:description" content="object detection에서 사용되는 Faster R CNN입니다.">
 <meta name="twitter:image" content="http://curaai.github.io/2017/12/03/Faster-R-CNN/difference.png">
     
     
@@ -236,7 +241,7 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>object detection에서 사용되는 Faster R CNN입니다.</p>
+            <!-- excerpt -->
 <h2 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R CNN"></a>Fast R CNN</h2><p>Faster R CNN은 이름으로도 알 수 있듯이 Fast R CNN에 기초하여 어떠한 것을 추가로 더한 것입니다. 그러니 먼저 Fast R CNN을 해야겠죠.</p>
 <h3 id="Region"><a href="#Region" class="headerlink" title="Region"></a>Region</h3><p>Fast R CNN은 R CNN과 다른점이 있습니다.</p>
 <p><img src="difference.png" alt="" title="between Fast R CNN &amp; R CNN"></p>
@@ -244,8 +249,28 @@
 <li>기존의 R-CNN은 이미지에서 region을 잘라내고 그것을 CNN에 거쳐 feature를 추출합니다.</li>
 <li>Fast R-CNN은 CNN을 통과한 전체 이미지의 feature에서 region을 추출합니다. </li>
 </ul>
-<h3 id="Roi-Pooling"><a href="#Roi-Pooling" class="headerlink" title="Roi Pooling"></a>Roi Pooling</h3><p>각각의 region이 feature로 부터 추출됬을 때 뒤에 있는 네트워크를 통과하기 위해서 사이즈를 일정하게 맞춰줄 필요가 있습니다.<br>일정하게 할 사이즈를 7 x 7 (H,W)라 하고, 각각 추출된 Roi(Region of Interest)는 (r, c, h, w)의 4값을 가지고 있습니다. <em>(r,c): top-left corner, (h,w): roi의 height &amp; width</em><br>h/H x w/W로 sub window를 만들고 거기서 max pooling을 하여 output grid cell이 됩니다. </p>
+<h3 id="Roi-Pooling"><a href="#Roi-Pooling" class="headerlink" title="Roi Pooling"></a>Roi Pooling</h3><p>각각의 region이 feature로 부터 추출됬을 때 뒤에 있는 네트워크를 통과하기 위해서 사이즈를 일정하게 맞춰줄 필요가 있습니다.<br>일정하게 할 사이즈를 7 x 7 (H,W)라 하고, 각각 추출된 Roi(Region of Interest)는 (r, c, h, w)의 4값을 가지고 있습니다. <em>(r,c): top-left corner, (h,w): roi의 height &amp; width</em><br>h/H x w/W로 sub window를 만들고 거기서 max pooling을 하여 output grid cell이 됩니다.</p>
+<blockquote>
+<p><img src="roi-pooling.png" alt="roi-pooling" title="Roi Pooling Image"></p>
+<p>위 그림과 같이 h/H , w/W로 나누다보니 sub window는 가변적인 사이즈가되버립니다. 그리고 sub window를 bin이라고 합니다.</p>
+</blockquote>
+<h4 id="Back-Propagation-through-Roi-Pooling-layer"><a href="#Back-Propagation-through-Roi-Pooling-layer" class="headerlink" title="Back Propagation through Roi Pooling layer"></a>Back Propagation through Roi Pooling layer</h4><p>전체 Loss $L$이 있을 때 이 $L$은 cls와 reg layer 뿐만 아니라 CNN에도 역전파로 $L$값을 전달해야 합니다. </p>
+<p><img src="roi-pooling-back-prop.png" alt="Back Prop" title="Back Propagation through Roi Pooling Layer"></p>
+<ul>
+<li>bin의 pooling 값을 $y<em>{rj} = x</em>{i*(r,j)}$ 이렇게 표현합니다.</li>
+<li>pooling할 값의 index를 구하는 과정은 $i^*(r,j) = \text argmax<em>{i’\in R(r,j)}x</em>{i’} \cdot R(r,j)$ 입니다.</li>
+</ul>
 <h3 id="Classifier-amp-BBox-Regressor"><a href="#Classifier-amp-BBox-Regressor" class="headerlink" title="Classifier &amp; BBox Regressor"></a>Classifier &amp; BBox Regressor</h3><p>각각의 Roi에 대해 softmax를 사용하여 classification하고, regression을 이용하여 Roi의 (x,y,w,h)를 정의합니다.</p>
+<ul>
+<li>softmax 에서는 K + 1개의 class에 대해 softmax를 합니다. <em>+1은 background</em></li>
+<li>regression 는 smooth l1 loss를 사용하며 식은 다음과 같습니다.<ul>
+<li><img src="smooth-l1-loss.png" alt="" title="smooth loss"></li>
+<li><u>smooth l1 loss에 대해 제 나름대로의 추측을 하자면 1보다 작은 값은 더 작게 하여 영향을 적게주고, 더 큰값은 -0.5만 주고 더 영향을 주게 하려는 것 같습니다.</u> </li>
+</ul>
+</li>
+</ul>
+<h3 id="Mini-Batch-Sampling"><a href="#Mini-Batch-Sampling" class="headerlink" title="Mini Batch Sampling"></a>Mini Batch Sampling</h3><p>paper에 의하면 N개의 이미지에서 총 R개의 Roi를 가져와 R/N만큼 sampling하여 학습을 진행한다고 합니다.</p>
+<p>그래서 N=2, R=128이므로(논문에서 정의된 parameter) 64개 만큼을 진행합니다</p>
 <h3 id="Fast-R-CNN-Architecture"><a href="#Fast-R-CNN-Architecture" class="headerlink" title="Fast R CNN Architecture"></a>Fast R CNN Architecture</h3><p><img src="fast-architecture.png" alt="" title="fast r-cnn architecture"></p>
 <p>전체적인 Fast R-CNN의 구조는 이렇게 생겼습니다. 순서대로 설명해보자면 </p>
 <ol>
@@ -254,17 +279,17 @@
 <li>feature map에서 crop된 Roi가 Roi pooling layer를 거쳐 H,W를 가진 size로 바뀝니다.(여기서는 7 x 7)</li>
 <li>Fully Connected Layer를 통과합니다. </li>
 <li>통과한 feature vector가 다시 두 갈래(branch)로 나뉩니다.</li>
-<li>두 branch 모두 각자의 FC를 거칩니다. 그 뒤<ul>
-<li>softmax branch에서는 K + 1개의 class에 대해 softmax를 합니다. <em>+1은 background</em></li>
-<li>regression loss는 smooth l1 loss를 사용하며 식은 다음과 같습니다.<ul>
-<li><img src="smooth-l1-loss.png" alt="" title="smooth loss"></li>
-<li><strong>smooth l1 loss에 대해 나 나름대로의 추측을 하자면 1보다 작은 값은 더 작게 하여 영향을 적게주고, 더 큰값은 -0.5로 적게 건드려서 더 영향을 주게 하려는 것 같다.</strong><h3 id="back-propagation"><a href="#back-propagation" class="headerlink" title="back propagation"></a>back propagation</h3><h3 id="mini-batch-sampling"><a href="#mini-batch-sampling" class="headerlink" title="mini batch sampling"></a>mini batch sampling</h3></li>
-</ul>
-</li>
-</ul>
-</li>
+<li>두 branch 모두 각자의 FC를 거칩니다. 위에 있는 Cls &amp; Bbox reg에 있는 과정을 수행합니다.</li>
 </ol>
-
+<p>이렇게 Fast R-CNN이 어떻게 작동하는지 보았습니다.</p>
+<h3 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h3><p>그러면 ‘Fast R-CNN이 R-CNN보다 어떤 점이 좋은가?’에 대해 알아봐야 겠죠.</p>
+<h4 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h4><p><img src="performance-experiment.png" alt="experiment"></p>
+<p>다른 여러 object detection algorithm과 비교한 표인데 전체적으로 Faster R-CNN이 우수한 결과를 내고 있는 것을 알 수 있습니다. (<em>test data는 VOC</em>)</p>
+<h4 id="Training-amp-Testing-time"><a href="#Training-amp-Testing-time" class="headerlink" title="Training &amp; Testing time"></a>Training &amp; Testing time</h4><p><img src="train-time.png" alt="experiment"></p>
+<p>R-CNN을 기준으로 했을 때 9 ~ 20배 정도 속도가 빨라진 것을 볼 수 있습니다.(train 만 가정했을 때) test는 더 엄청납니다. </p>
+<h4 id="SVM-amp-Softmax"><a href="#SVM-amp-Softmax" class="headerlink" title="SVM &amp; Softmax"></a>SVM &amp; Softmax</h4><p><img src="classifier-experiment.png" alt="experiment"></p>
+<p>표와 같이 R-CNN(SMV)이 S,M 사이즈에 대해선 가장 좋은 성능을 보여줬고,</p>
+<p>Fast R-CNN에서는 SVM보다 Softmax가 조금 더 나은 성능을 보여줬습니다.</p>
             
         </div>
     </div>
@@ -566,7 +591,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>object detection에서 사용되는 Faster R CNN입니다.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
