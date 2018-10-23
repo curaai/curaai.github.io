@@ -18,11 +18,11 @@
  하지만 object의 activation region을 사용하기 때문에 fc layer에서 정보가 사라지면 안됀다. 그래서 마지막 convolution layer에서 global average pooling을 실행한다. **global average pooling은 activation된 각 channel의 값(정보량)의 평균이다.** 이 다음 fully connected layer를 연결한다.
  
  classification network의 forwarding은 다음과 같다.
- - $f_k(x, y)$는 feature에서 $k$번째 channel의 $(x, y)$값이다. => $
+ 1. $f_k(x, y)$는 feature에서 $k$번째 channel의 $(x, y)$값이다. => $
  F_k = \sum_{x, y} f_k(x, y) $
- - class $c$의 softmax input은 각 channel의 평균 * weight $w^c_k$의 합이다. => $
+ 2. class $c$의 softmax input은 각 channel의 평균 * weight $w^c_k$의 합이다. => $
  S_c = \sum_k w^c_k F_k $
- - softmax의 probability output $P_c$는 Eqn(3)과 같다. => $
+ 3. softmax의 probability output $P_c$는 Eqn(3)과 같다. => $
  P_c = \frac{exp(S_c)}{\sum_c exp(S_c)} $
  마지막 convolution layer feature에서 위 연산을 한다. 이때 bias term은 무시한다.
 
