@@ -79,7 +79,7 @@ $ M^c_{Grad-CAM} = ReLU \underbrace{\bigg( \sum_k w^c_kA^k \bigg)}_{\text{linear
 
 ## Grad-CAM++
 
- Grad-CAM은 결국엔 map을 normalize하기 때문에, 한곳에서 activation이 아주크게 나타날 경우 map에서는 조금 activation된 곳이 아예 activation이 안된것 처럼 보여진다. 그래서 같은 class의 다중 반응과 object의 전체 영역 localize를 하지 못한다.
+ Grad-CAM은 결국엔 map을 normalize하기 때문에, 한곳에서 activation이 아주크게 나타날 경우 상대적으로 activation이 적은곳은 map에서는 activation되지 않은 것처럼 보인다. 그래서 같은 class의 다중 반응과 object의 전체 영역 localize를 하지 못한다.
 
  Grad-CAM++에서는 softmax와 exponential function에 대해 고차미분을 통해 pixel-wise weight을 소개한다.
 
@@ -121,4 +121,4 @@ $ M^c_{Grad-CAM} = ReLU \underbrace{\bigg( \sum_k w^c_kA^k \bigg)}_{\text{linear
 
  ![Grad-CAM++ Fig. 2](/assets/images/Grad-CAM/Grad-CAM++_Figure2.png)
  
- 논문의 Figure라 notation은 조금 다를 수 있으나, 이해하셨다면 별문제는 없으실 것이다.
+ 논문의 Figure라 notation은 조금 다르다, 하지만 이해했다면 큰문제는 없을것이다. 
