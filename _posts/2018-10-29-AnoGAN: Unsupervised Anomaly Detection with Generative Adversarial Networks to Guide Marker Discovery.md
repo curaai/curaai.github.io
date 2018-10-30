@@ -96,5 +96,5 @@ L_(z_{\Gamma}) = (1 - \lambda) * L_R(z_{\Gamma}) + \lambda * L_D(z_{\Gamma})
 
  GAN이라 성능이 잘안나올 것 같지만 의외로 잘나온다고 한다. 
 
-[^1]: [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)  
-[^2]: [Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434)
+[^1]: [Arxiv: Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)  
+[^2]: [Arxiv: Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434)
