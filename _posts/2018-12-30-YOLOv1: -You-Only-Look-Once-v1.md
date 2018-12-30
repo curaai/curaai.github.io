@@ -48,7 +48,7 @@
 - Box는 (x, y, w, h, confidence)로 구성된다. 
     - x, y는 0 ~ 1사이의 값이며 grid cell안의 x, y 중심 좌표를 나타낸다. 
     - w, h는 0 ~ 1사이의 값이며 이미지 전체 중에서 box의 크기를 나타낸다. 
-    - confidence는 각 box가 얼마나 object가 있을 것 인가를 예측하는 값인데, box안에 object가 있을 확률 * 예측한 box와 실제 box가 겹칠 확률로 정의한다. 구조적으로 condition을 준 것은 아니고 저자가 그냥 _정의_ 만 했다. 
+    - confidence는 각 box가 얼마나 object가 있을 것 인가를 예측하는 값인데, box안에 object가 있을 확률 * 예측한 box와 실제 box가 겹칠 확률로 정의한다.
 - grid cell은 C개의 class probabilities를 예측한다. 실제로 predict를 할때는 각 box의 confidence * class probabilities이다. 
 - YOLO를 Pascal VOC로 검증할때에는 S=7, B=2, C=20으로 7 * 7 * 30 개의 tensor를 예측했다.
 
