@@ -4,12 +4,7 @@
 -tags: Object Detection
 ---
 
- YOLO는 한때 SSD, Faster R-CNN과 함께 object detection에 대표적으로 사용되던 모델이다. object detection이란 이미지에서 물체(object)를 인식하여 해당 물체를 찾아 사각형으로 크기, 위치를 표현하는 것이다(detection). 이는 여러 분야에 사용할 수 있다. 예를들어 
-
- - 카메라 앱에서 사람의 손과 얼굴을 인식
- - 자율주행 자동차에서 도로의 자동차와 자전거, 사람, 신호등 등을 인식
- - 방범 cctv에서 사람을 인식 
- 등등 다양한 분야에 사용된다.
+  오늘은 유명한 Detection framework SSD, R-CNN, YOLO 중 YOLO를 리뷰한다. YOLO는 다른 프레임워크들에 비해 빠르고 간단한 구조가 특징인데 v1인 만큼 modelling을 잘하진 않았다. 하지만 Fast R-CNN 만큼의 성능을 내면서 모바일에 embedding을 할만큼 가볍고 빠르다. 주로 다룰내용은 YOLOv1의 구조와 training detail이다. 
 
 <!--more-->
 
@@ -17,9 +12,14 @@
 
 ## Introduction 
 
- YOLO가 나올당시에는 DPM, Faster R-CNN이 나온 상태였다. 둘다 처리속도가 너무 느려 RealTime으로 사용하기에는 한참 무리가 있었다. 그 이유는 Faster R-CNN의 Two-Stage 방식의 detection과정 때문인데 Two-Stage란 box를 추출해내는 network가 따로 있고, 이 Box를 recognition하는 network가 분리되어 있는 것을 말한다. 반대로 One-Stage는 Grid cell방식의 고정된 개수의 box가 만들어지는 detection과 recognition하는 network가 합쳐진 것을 말한다. 
 
- 오늘 우리가 알아볼 YOLO는 One-Stage방식의 Detector로서 FPS가 30을 넘고 mAP또한 그 당시 준수한 성적을 낸 SOTA모델이었다. 
+ YOLO가 나올당시 Deep Learning방식의 DPM, Faster R-CNN이 나온 상태였다. 하지만 둘다 속도가 느려 RealTime으로 사용하기에 한참 무리가 있었다. 그 이유는 뭘까? 일단 Faster R-CNN의 동작방식을 가볍게 알아보자.
+ 
+ > input -> Feature Extract -> Region Proposal -> Roi Pooling -> Classification & Regression -> output 
+ 
+ 위 과정은 화살표마다 처리가 분리된다. _실제로 네트워크도 분리 되어있다._ 그래서 End2End로 학습할수 없을 뿐더러, 각 Network는 Layer를 쌓아야하기 때문에 속도가 꽤 느리다. _논문GPU기준 5 FPS정도이다._
+ 
+ 하지만 YOLOv1은 위 과정을 압축하면서 속도를 줄이고 성능 또한 잘나오는 SOTA 모델이다. _YOLOv1은 FPS가 30을 넘고 mAP또한 Fast R-CNN보다 높다._ 
 
 ## Unified Detection
  
