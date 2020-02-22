@@ -1,6 +1,6 @@
 ---
 title: (CMake 튜토리얼) 0. VisualStudio Code cmake 세팅
-tags: cmake, visual-studio-code
+tags: cmake visual-studio-code
 ---
 
  이글은 필자가 Mac OS X를 사용하며 cpp를 하고싶어 vs-code에 cmake를 사용하여 프로젝트에서 사용한 tech 기록을 목적으로 하고있습니다. 

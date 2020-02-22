@@ -1,6 +1,6 @@
 ---
 title: (CMake 튜토리얼) 0a. MacOS X VisualStudio Code debug 세팅
-tags: cmake, visual-studio-code
+tags: cmake visual-studio-code
 ---
 
  MacOS X Catalina 이상의 버전에서 디버깅이 안되는 삽질을 경험한 후 정리하는 글입니다.
