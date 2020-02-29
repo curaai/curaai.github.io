@@ -1,6 +1,6 @@
 ---
 title: (CMake 튜토리얼) 2. GTest 사용하기
-tags: cmake visual-studio-code
+tags: cmake google-test
 ---
 
  GTest를 사용하며 프로젝트 구조를 변경합니다. 변경된 구조를 가지고 VS Code에서 테스트 검증 및 빌드를 하는 방법을 서술하였습니다.
