@@ -26,49 +26,60 @@ titles:
 key: page-about
 ---
 
-![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
+ 열정 넘치는 noob 개발자
 
-TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
+## Experience
 
-```javascript
-(() => console.log('Hello, World!'))();
-```
+- <small>2015.03 ~ 2018.07</small> 대덕소프트웨어마이스터고등학교
+  - 정보보안과
+- <small>2018.08 ~ </small> AlcheraInc
+  - Intelligent Camera Team
+  - Data Science Team
+  - Advanced Development Team
 
-## Features
+## Projects & Skills
 
-- Responsive
-- Semantic HTML
-- Skins
-- Highlight Theme
-- Internationalization
-- Search
-- Table of contents
-- Authors
-- Additional styles (alert, tag, image, icon, button, grid, etc)
-- Extensions (audios, videos, slides, demos)
-- Markdown enhancements ([MathJax](https://www.mathjax.org/), [mermaid](https://mermaidjs.github.io/), [chartjs](http://www.chartjs.org/))
-- Sharing ([AddToAny](https://www.addtoany.com/), [AddThis](https://www.addthis.com/))
-- Comments ([Disqus](https://disqus.com/), [Gitalk](https://gitalk.github.io/), [Valine](https://valine.js.org/en/))
-- Pageview ([LeanCloud](https://leancloud.cn/))
-- Analytics ([Google Analytics](https://analytics.google.com/analytics/web/))
-- RSS ([jekyll-feed](https://github.com/jekyll/jekyll-feed))
+### Deep Learning
 
-## Skins
+- Paper Review
+  - `2018.05` [ResNet: Deep Residual Learning for Image Recognition](https://curaai00.tistory.com/1?category=773035)
+  - `2018.06` [DCGAN: Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks](https://curaai00.tistory.com/3?category=773036)
+  - `2018.06` [AlexNet: ImageNet Classification wtih Deep Convolutional Neural Networks](https://curaai00.tistory.com/4?category=773035)
+  - `2018.06` [Domain Transfer Network: Unsupervised Cross-Domain Image Generation](https://curaai00.tistory.com/5?category=773036)
+  - `2018.07` [ResNet: Identity Mappings in Deep Residual Networks](https://curaai00.tistory.com/6?category=773035)
+  - `2018.07` [GRU: Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation](https://curaai00.tistory.com/7?category=773943)
+  - `2018.08` [YOLO v1: You Only Look Once](https://curaai00.tistory.com/8?category=777806)
+  - `2018.09` [Attention, RNNsearch: Neural Machine Translation by Jointly Learning to Align and Translate](https://curaai00.tistory.com/9?category=780952)
+  - `2018.10` [Temperature Scaling, Calibration: On Calibration of Modern Neural Networks](https://curaai00.tistory.com/10?category=773035)
+  - `2018.10` [CAM, Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization](https://curaai00.tistory.com/11?category=783554)
+- Paper Implement
+  - `2018.01` [simple-dcgan](https://github.com/curaai00/simple-dcgan)
+  - `2018.01` [simple-gan](https://github.com/curaai00/simple-gan)
+  - `2018.02` [DTN_torch](https://github.com/curaai00/DTN_torch)
+  - `2018.02` [pix2pix-torch](https://github.com/curaai00/pix2pix-torch)
+  - `2018.02` [RT-StyleTransfer-forVideo](https://github.com/curaai00/RT-StyleTransfer-forVideo)
 
-TeXt has 6 built-in skins, you can also set up your own skin.
+- `2017.08` [my-twice-cnn](https://github.com/curaai00/my-twice-cnn)
+- `2017.09` [simple-genetic-algorithm](https://github.com/curaai00/simple-genetic-algorithm)
+- `2017.10` [HexagonBot](https://github.com/curaai00/HexagonBot)
+- `2017.10` [Artistic-Image](https://github.com/curaai00/Artistic-Image)
+- `2017.10` [AI-Composer](https://github.com/curaai00/AI-Composer)
 
-| `default` | `dark` | `forest` |
-| --- |  --- | --- |
-| ![Default](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_default.jpg) | ![Dark](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_dark.jpg) | ![Forest](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_forest.jpg) |
+### Python
 
-| `ocean` | `chocolate` | `orange` |
-| --- |  --- | --- |
-| ![Ocean](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_ocean.jpg) | ![Chocolate](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_chocolate.jpg) | ![Orange](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_orange.jpg) |
+- `2017.07` [GoogleImageCrawler](https://github.com/curaai00/GoogleImageCrawler)
+- `2017.08` [python_challenge](https://github.com/curaai00/python_challenge)
+- `2017.08` [EulerProject](https://github.com/curaai00/EulerProject)
 
-### Highlight Theme
+### C / C++
 
-TeXt use [Tomorrow](https://github.com/chriskempson/tomorrow-theme) as the highlight theme.
+- `2017.05` [Tetris](https://github.com/curaai00/Tetris)
+- `2020.03` [selfmade-c-structures](https://github.com/curaai00/selfmade-c-structures)
 
-| `tomorrow` | `tomorrow-night` | `tomorrow-night-eighties` | `tomorrow-night-blue` | `tomorrow-night-bright` |
-| --- |  --- | --- | --- |  --- |
-| ![Tomorrow](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png) | ![Tomorrow Night](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png) | ![Tomorrow Night Eighties](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png) | ![Tomorrow Night Blue](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png) | ![Tomorrow Night Bright](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png) |
+### C#
+
+- `2017.09` [OneClick-IP](https://github.com/curaai00/OneClick-IP)
+
+### Graphics
+
+- `2020.04` [Scratch-3D-Engine](https://github.com/curaai00/Scratch-3D-Engine)
