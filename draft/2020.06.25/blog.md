@@ -1,4 +1,4 @@
-## Symbol
+<!-- ## Symbol
 
  workspace에서 파일과 symbol을 넘나들며 이동한다. [VS Code Document](https://code.visualstudio.com/docs/editor/editingevolved)
 
@@ -56,3 +56,16 @@
  필자의 경우 `: [Setting]Preferences/Keyboard Shortcuts`에서 키보드로도 hover를 발동시킬 수 있도록 shortcut을 커스터마이징하였다.
 
 ![hover-custom setting](rsc/hoversetting.png)
+
+## Smart Selection
+
+ 일반적인 에디터에서 cursor가 선택하고 싶은 영역 혹은 단어의 중간에 있을 경우, `ctrl`로 선택하고싶은 영역의 처음으로 가서 `shift`를 눌러 selection을 하곤한다.
+
+ `: Smart Selection`은 현재 커서를 기준으로 선택영역을 *smart*하게 늘려준다.
+
+> string 단어 중간 > 단어 > 괄호 안 > 괄호 포함 > line 처음-끝 > line 전체 > struct 중괄호 안 > struct 중괄호 포함 > 문단 -> 파일 전체
+ ![smart-selection](rsc/smart_selection.gif)
+
+
+> Expand Selection: `shift + alt + left_arrow` \
+> Shrink Selection: `shift + alt + right_arorw` -->
