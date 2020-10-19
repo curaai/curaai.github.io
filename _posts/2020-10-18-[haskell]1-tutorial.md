@@ -1,5 +1,5 @@
 --- 
-title: 1. Haskell Tutorial 
+title: (Haskell Tutorial) 1. Simple Types
 tags: haskell
 mathjax: true
 ---
@@ -7,6 +7,8 @@ mathjax: true
 C++, python만 할줄아는 나는 `FP(Functional Progamming)` 을 배우던중 지금 하고있는 언어에서 사용하면서 배우는 것이 아닌 `FP`를 base로 하는 언어에서 concept과 방식, 설계를 배워볼려고 한다.
 
 얼마전 흥미로운 글이 `Haskell`로 되어있어 이해하는데 어려움이 있었는데 이것이 위 욕구를 자극하는 도화선이 됐다. 이 시리즈는 함수형 언어를 배우면서 쓰는 튜토리얼을 가장한 TIL이다. 
+
+<!--more-->
 
 앞으로 `ghic >`를 `>` notation으로 교체하겠다.
 
