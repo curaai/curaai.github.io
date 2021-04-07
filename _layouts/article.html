@@ -14,7 +14,7 @@ type: article
   <div class="article__content" itemprop="articleBody">{{ content }}</div>
 
   {%- if _sharing -%}
-    <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
+  <section class="article__sharing d-print-none">{%- include sharing.html -%}</section>
   {%- endif -%}
 
   <div class="d-print-none">
@@ -22,6 +22,10 @@ type: article
     {%- include article-section-navigator.html -%}
   </div>
 
+</div>
+
+<div id="post-disqus" class="container">
+  {% include disqus.html %}
 </div>
 
 <script>
