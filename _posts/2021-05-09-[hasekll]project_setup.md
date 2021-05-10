@@ -120,6 +120,29 @@ tests:
 
 ![4](/assets/images/2021-05-09/Untitled4.png)
 
+### Intellisense Error 
+
+ 개발을 하다가 갑자기 intellisense가 잘 동작하지 않는 경우가 있었다. 구글링으로 `hie.yaml`을 설정해야 한다는 것을 알았다. stack project를 기본 템플릿대로 생성했다면 src, lib, test 코드 폴더가 메인일 것이다. 
+ 
+ 프로젝트 이름이 `asdf`라고 할때 아래와 같이 `hie.yaml`를 루트에 생성했다.
+
+ _추후에 해당 내용을 조사후 업데이트 하겠다._
+
+```yaml 
+cradle:
+  stack:
+    stackYaml: "stack.yaml"
+    components:
+      - path: "./src"
+        component: "asdf:lib"
+
+      - path: "./app"
+        component: "asdf:exe:asdf-exe"
+
+      - path: "./test"
+        component: "asdf:test:asdf-test"
+```
+
 ## 여담
 
 추가로 Hunit, SmallCheck, QuickCheck 등 테스트 프레임워크 사용방법이나, 테스트 커버리지 등을 하스켈에서 사용하는 방법을 공부하면서, 올려보겠다.
