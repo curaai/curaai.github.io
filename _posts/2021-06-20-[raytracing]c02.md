@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) Vec3 클래스
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

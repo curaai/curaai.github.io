@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 구 그리기
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

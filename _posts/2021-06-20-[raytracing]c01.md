@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 간단한 이미지 만들기
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

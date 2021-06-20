@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 카메라 움직이기
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

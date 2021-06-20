@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 난반사 재질
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

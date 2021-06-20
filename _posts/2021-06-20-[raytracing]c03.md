@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) Ray, 카메라, 배경
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

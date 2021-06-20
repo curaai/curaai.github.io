@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) Intro
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 안티앨리어싱
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

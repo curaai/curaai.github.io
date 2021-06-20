@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 메탈
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

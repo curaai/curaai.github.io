@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 유전체
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

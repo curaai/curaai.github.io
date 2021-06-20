@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 흐린 초점
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 

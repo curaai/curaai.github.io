@@ -1,6 +1,6 @@
 --- 
 title: (RayTracing) 법선 셰이딩과 Hittable 추상화
-tags: haskell
+tags: haskell graphics raytracing
 mathjax: true
 ---
 
