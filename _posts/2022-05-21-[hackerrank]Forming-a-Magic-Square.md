@@ -12,6 +12,11 @@ tags: algorithm hackerrank
 
 ---
 
+참고 
+
+- <https://github.com/curaai/StudyAlgorithms/blob/main/haskell/hackerrank/magic_square_forming.hs>
+- <https://www.hackerrank.com/challenges/magic-square-forming/problem>
+
 ## Code
 
 ```haskell
