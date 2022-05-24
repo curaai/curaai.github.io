@@ -1,6 +1,6 @@
 ---
 title: (codewars) Explosive Sum, Partial Number
-tags: algorithm, math
+tags: algorithm  math
 mathjax: true
 ---
 
