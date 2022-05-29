@@ -1,6 +1,6 @@
 ---
 title: (HackerRank) Forming a Magic Square
-tags: algorithm hackerrank
+tags: algorithm hackerrank haskell
 ---
 
  잘못된 3*3 Magic Square가 입력으로 주어졌을 때, 행렬을 최소로 수정한 값의 차이를 출력하는 문제입니다.

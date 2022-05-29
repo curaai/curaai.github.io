@@ -1,6 +1,6 @@
 ---
 title: (HackerRank) Non-Divisible Subset
-tags: algorithm hackerrank
+tags: algorithm hackerrank haskell 
 mathjax: true
 ---
 
