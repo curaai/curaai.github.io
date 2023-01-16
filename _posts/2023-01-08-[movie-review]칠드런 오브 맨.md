@@ -1,6 +1,6 @@
 ---
 title: (영화 리뷰) 칠드런 오브 맨
-tags: movie-revie맨
+tags: movie-review
 ---
 
  영화 `칠드런 오브 맨`을 읽고 쓰는 리뷰입니다.
