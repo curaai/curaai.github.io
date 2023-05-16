@@ -1,9 +1,9 @@
 ---
 title: (Tips for Beginner Game Programmers) +/- 프로그래밍 법칙
-tags: Tips for Beginner Game Programmers
+tags: Tips-for-Beginner-Game-Programmers
 ---
 
- 학원 및 학부를 나와 취업을 했지만, 신입 게임 개발 프로그래머로서 실수하고 있는 사람과 스스로를 위해 쓰는 글입니다. 
+ 접근 한정자의 의미를 이해하고, 안전함을 제공하는 방법을 알려주는 글입니다. 
 
 <!--more-->
 
@@ -11,35 +11,35 @@ tags: Tips for Beginner Game Programmers
 
 ## 서문
 
-게임 프로그래밍은 다른 분야에 비해 생성/제거하는 객체양과 각각의 상호작용이 정말정말 많다. 이때 신입 게임 클라이언트 프로그래머가 놓칠만한 점을 짚어보겠다. 이때까지 책을 읽고 공부한 것을 스스로 정의한 법칙이라 당연히 이미 알수도 있고(개발서적을 많이본 독자라면), 이미 숨쉬듯이 하고 있었지만, 글 읽고 인지할 수도 있다. 
+게임의 코어부터 시작해서 특별한 기능을 구현할 때는 새로운 클래스와 인터페이스를 만들기보다, 기존 클래스를 재활용(상속)하는 일이 빈번다. 이는 기존 개체간의 시스템 코어 로직의 변경과 버그 가능성을 줄이면서 빠르게 기능을 구현할 수 있기 때문이다. 이때 `private` , `protected` , `virtual` , `abstract` 를 무시한 채 ‘*기능을 구현한다*’라는 단순한 사고로 작업을 시작한다면, 개발자가 아닌 버그 자판기가 된다.
 
-## 법칙
+## 제약과 흐름 통제
 
-| +/- 프로그래밍 법칙은 아주 사소하면서 단순하다. **“+코드를 적는다면, 반드시 - 코드를 구현해라.”** 
-
-+코드는 아주아주 추상적이기에 독자가 의미를 부여하기 나름이다. 먼저 아래 예시를 들어본다면; 
-
-- 크게는 객체의 생성과 제거
-- 클래스속 생성자와 소멸자 (Unity의 Awake/OnDestroy, OnEnable/OnDisable)
-- 리스트 요소 추가/제거(리스트 초기화)
-- 클래스 멤버(`int entityId`, `bool invisible`, `float velocity` , 등등)
+객체의 역할을 이해하고 접근 제한을 통해 안전한 프로그래밍을 하고 있는 동료는 이 접근 한정자를 굳이 붙여가면서 당신의 실수를 저지한다. `private`, `protected` 와 같은 접근 한정자의 역할은 단순히 부모 클래스의 멤버 소유가 다가 아니다. `protected` 로 된 멤버의 상태 흐름 조절 역할을 포함하고 있다. 이는 이전 포스팅인 [+/- 법칙](https://blog.curaai.dev/2023/05/08/Tips-for-Beginner-Game-Programmers-+-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EB%B2%95%EC%B9%99.html)과도 이어지는데 부모 클래스의 멤버는 부모 클래스에서 +/- 가 통제되며, 이를 상속받은 자식 클래스에서 강제로 변경하면 안된다.
 
 ## 예시
 
-거창하게 법칙이라고 했지만, 위 예시를 보면 아주아주 당연한 얘기다. 하지만 순간의 안일함(귀찮음)과 실수로 버그를 만들 수 있다. 위 사례를 가지고 몇가지 예시를 들어보겠다. 
+단편적인 예로 A 컴포넌트의 기능 중 하나가 특정 위치까지 도달한다고 해보자. 아래에서 `DestinationPos` 멤버의 접근은 `get` , 쓰기는 `private` 으로 제한되어 있으며 시작과 종료시에 null로 초기화하고 있다. 시작과 종료시에 굳이 초기화를 하는 이유 중 하나는 도착위치가 null에서 시작돼 A 클래스 안에서 값이 확인 및 재설정되며 흐름이 조절된다.
 
-유저의 유효한 입력이 들어왔을 때, `SkillHolder` 가 skill을 실행하도록 `SkillAreaInputReceiver`가 callback를 설정하는 코드다. `onSuccessToExecuteCb` 는 콜백이 초기화 되지 않아, action을 호출할 때 cost가 콜백의 개수만큼 더 소모되었다. 
-
-```jsx
-public void RequestToExecute(UnityAction onSuccessToExecute)
+```csharp
+class A : MonoBehaviour
 {
-    skill.Prepare();
-    onSuccessToExecuteCb += onSuccessToExecute;
+	public Vector3? DestinationPos {get; private set;} 
+
+	private void OnEnable()
+	{
+	    DestinationPos = null;
+	}
+	
+	private void OnDisable()
+	{
+	    DestinationPos = null;
+	}
 }
 ```
 
-유닛이 어떤 상황으로 인해 invisible=true가 인채 공격을 받아 InActive상태가 되었다. 원래는 전혀 문제 없는 상황이지만, 최적화를 위해 ObjectPool을 사용할 떄 문제가 된다. OnDisable에서 Unit의 상태를 초기화 하지 않은 상태로 Pool에서 꺼내졌을 때 invisible한 상태로 spawn된다. 이렇게 생성된 유닛은 로그상 에러가 보이지 않지만(발생할 수도 있음) 문제를 내포한 상태다. 
+위 기능을 무시한채 `private set` property를 `protected set` 으로 바꾼후 자식 클래스에서 `base.OnEnable(); DestinationPos = new Vector(x, y, z);`  강제로 변경할 경우 A 내 흐름이 통제되지 않아 뜻하지 않은 버그를 맞닥드릴 수도 있다. 
 
-## 마무리 
+## 마무리
 
-새로운 코드를 추가할때 이를 명심하면, 코드 작성 중 발생할 수 있는 버그를 줄일 수 있다. 일단은 2가지 예시를 들었지만, 객체가 많고 서로간 참조, 접근이 많으면 많을 수록 처리되지 않은 상태에 대해 연계되는 버그를 수많이 파생시킬 수 있으니 조심하자.
+객체의 역할에 따라 ‘*이 멤버는 여기서 조절되어야 해*’, ‘*저 멤버는 상속에서 건드려 질수도 있어*’를 설계시 신경써보자. 신경쓴 코드를 마주할 때 ‘*어 이거 바꿔서 쓰면 되겠다*’를 한번더 생각해보자. 몇글자의 키워드 만으로 앞으로 마주하게 될 몇 버그들을 미연에 방지할 수도 있으니 말이다.
