@@ -1,5 +1,5 @@
 ---
-title: (Tips for Beginner Game Programmers) +/- 프로그래밍 법칙
+title: (Tips for Beginner Game Programmers) 접근 한정자
 tags: Tips-for-Beginner-Game-Programmers
 ---
 
@@ -25,10 +25,21 @@ tags: Tips-for-Beginner-Game-Programmers
 class A : MonoBehaviour
 {
 	public Vector3? DestinationPos {get; private set;} 
+	public UnityAction OnDestinationSetCb = null;
 
 	private void OnEnable()
 	{
 	    DestinationPos = null;
+	}
+
+	private void Update()
+	{
+		if(DestinationPos.HasValue == false && ConditionA)
+		{
+			DestinationPos = new Vector(x, y, z);
+			OnDestinationCb?.Invoke();
+			SomethingElseFunction();
+		}
 	}
 	
 	private void OnDisable()
@@ -38,7 +49,7 @@ class A : MonoBehaviour
 }
 ```
 
-위 기능을 무시한채 `private set` property를 `protected set` 으로 바꾼후 자식 클래스에서 `base.OnEnable(); DestinationPos = new Vector(x, y, z);`  강제로 변경할 경우 A 내 흐름이 통제되지 않아 뜻하지 않은 버그를 맞닥드릴 수도 있다. 
+위 기능을 무시한채 `private set` property를 `protected set` 으로 바꾼후 자식 클래스에서 `base.OnEnable(); DestinationPos = new Vector(x, y, z);` 강제로 변경할 경우 A 내 null에서 값을 할당하고 콜백/추가함수 실행 흐름이 A클래스를 설계한대로 흘러가지 않아 버그를 맞닥드릴 수도 있다. 
 
 ## 마무리
 
