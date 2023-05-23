@@ -16,15 +16,16 @@ tags: Tips-for-Beginner-Game-Programmers
 ```csharp
 피격정포 피격계산(공격정보 공격)
 {
-	if(회피검사)
-     회피동작.실행
-  else if(방어검사)
-     방어동작.실행
-  else 
-  {
-     피격계산
-     ...
-  }
+
+   if(회피검사)
+      회피동작.실행
+   else if(방어검사)
+      방어동작.실행
+   else 
+   {
+      피격계산
+      ...
+   }
 }
 ```
 
