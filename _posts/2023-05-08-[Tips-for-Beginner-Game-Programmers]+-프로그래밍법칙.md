@@ -1,6 +1,6 @@
 ---
 title: (Tips for Beginner Game Programmers) +/- 프로그래밍 법칙
-tags: Tips for Beginner Game Programmers
+tags: Tips-for-Beginner-Game-Programmers
 ---
 
  학원 및 학부를 나와 취업을 했지만, 신입 게임 개발 프로그래머로서 실수하고 있는 사람과 스스로를 위해 쓰는 글입니다. 
