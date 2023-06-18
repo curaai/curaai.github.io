@@ -11,9 +11,7 @@ tags: Tips-for-Beginner-Game-Programmers translate
 
 ## SomethingManager
 
-`SomethingManager` 만큼 모호한 이름이 없다. `**Manager` 단어를 피하자.** ‘Alan Green’ 은 블로그에서 나쁜이름의 대안을 제안했다. 이 블로그를 다 읽으면, 클래스가 정확히 무엇을 하는지에 직관을 줄 것이다. 
-
-객체와 클래스의 이름을 잘 서술하면 좋겠지만 쉽지 않다. Steve McConnell은 좋은 이름을 짓기 위해 도움될만한 지침 루틴을 제공한다.
+`SomethingManager` 만큼 모호한 이름이 없습니다. **`Manager` 단어를 피하자.** ‘Alan Green’ 은 블로그에서 나쁜이름의 대안을 제안했습니다. 아티클을 읽으면 이름을 짓는 것에 대해 직관을 조금이나마 얻을겁니다. 객체와 클래스를 표현하는 직관적인 이름을 짓는것은 쉽지 않습니다. 그래서 Steve McConnell은 좋은 이름을 짓는 방법을 제안했습니다. 
 
 1. **동작하는 모든 것을 서술해라**. 이름이 기가 찰 정도로 길더라도 루틴일 뿐이니 일단 무시하자.
 2. **의미없거나, 모호하고, 선명하지 않은 동사를 피해라.** 예)`UrlManager`, `HandleOutput`, `PerformServices`. 명확히 무엇을 하는가? 간결한 답이 나오지 않는다면, 가능할 때까지 리팩토링해라.
@@ -26,9 +24,9 @@ tags: Tips-for-Beginner-Game-Programmers translate
     - `Start <=> Stop`
 7. **공동 작업 중 Convention을 정해라.**
 
-클래스와 변수의 이름을 재정의 하는건 내가 가장 자주하는 리팩토링 기법이다. [좋은 이름을 짓는건 어렵다](https://martinfowler.com/bliki/TwoHardThings.html), *하지만 어려워야 한다*, 대단한 이름은 그저 한-두 단어로 본질을 내포하기 때문에.
+클래스와 변수의 이름을 재정의 하는 것은 가장 자주하는 리팩토링 방법입니다. [좋은 이름을 짓는건 어렵다](https://martinfowler.com/bliki/TwoHardThings.html), *하지만 어려워야 합니다*, 대단한 이름은 그저 한-두 단어로 본질을 내포하기 때문입니다.
 
-작업을 다 끝내기 전까지 무슨 이름이어야 하는지 알기어렵다. 코드처럼, 절대 끝능 없다, 그래서 시간을 거듭할 수록 이름은 계속 바뀐다. 명명은 쓰레기 코드와 계속 짜고싶은 코드사이를 결정 짓는다. 
+작업을 다 끝내기 전까지 무슨 이름이어야 하는지 알기어렵습니다. 코드처럼, 절대 끝은 없습니다, 그래서 시간을 거듭할 수록 이름은 계속 바뀝니다. 하지만 이름에 따라 쓰레기코드/짜고싶은 코드로 결정되기도 합니다.
 
 - (원래 자료: [*음 어떤매니저라고 불러야 하나?*](https://blog.codinghorror.com/i-shall-call-it-somethingmanager/))
 
