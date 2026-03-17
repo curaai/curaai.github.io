@@ -26,7 +26,7 @@ titles:
 key: page-about
 ---
 
- 열정 넘치는 noob 개발자
+ 개발자
 
 ## Experience
 

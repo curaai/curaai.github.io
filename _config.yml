@@ -18,9 +18,9 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : https://curaai00.github.io
+url     : https://blog.curaai.dev
 baseurl : # does not include hostname
-title   : Noob developer blog 
+title   : Curaai.Dev
 description: > # this means to ignore newlines until "Language & timezone"
   ...
   Your Site Description
@@ -36,7 +36,7 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : person # "person" (default), "organization"
-  name      : curaai00 
+  name      : curaai
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : I am an amazing person.
